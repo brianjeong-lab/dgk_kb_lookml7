@@ -10,17 +10,8 @@ FROM `kb-daas-dev.master_200729.keyword_bank_result` as keywordBankResult
       , UNNEST(keywordBankResult.KPE) as keywordBankResultKpe
 WHERE keywordBankResultKpe.keyword  LIKE {% parameter searchKeyword %}
 and keywordBankResult.CHANNEL  = '뉴스'
-and DATE(CRAWLSTAMP) >= {% parameter prmfrom %}
-and DATE(CRAWLSTAMP) <= {% parameter prmto %}
+
  ;;
-  }
-
-  filter: prmfrom {
-    type: string
-  }
-
-  filter: prmto {
-    type: string
   }
 
   filter: searchKeyword {
